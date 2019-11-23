@@ -30,14 +30,10 @@ export default function NavBar() {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/List">List</NavLink>
+                <NavLink href="/list">List</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
-                </NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+
+              <UncontrolledDropdown nav inNavbar className="sr-only">
                 <DropdownToggle nav caret>
                   Options
                 </DropdownToggle>

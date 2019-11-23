@@ -7,7 +7,6 @@ const logger = require("morgan");
 const indexRouter = require("./routes/index");
 
 const app = express();
-
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -19,12 +18,21 @@ app.get("*", (req, res) => {
   res.sendFile("build/index.html", { root: __dirname });
 });
 
+//TODO: Enable cors
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+});
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
 });
 
-// TODO Web Template Studio: Add your own error handler here.
+//TODO: Web Template Studio: Add your own error handler here.
 if (process.env.NODE_ENV === "production") {
   // Do not send stack trace of error message when in production
   app.use((err, req, res, next) => {
